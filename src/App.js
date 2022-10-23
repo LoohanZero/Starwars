@@ -1,35 +1,28 @@
 import Navbar from './components/navbar/Navbar';
 import Navhome from './components/navhome/Navhome';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes
-} from "react-router-dom";
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/home/Home';
+import Starships from './pages/starships/Starships';
+import StarshipDetails from './pages/starshipDetails/StarshipDetails';
 
 
 function App() {
   return (
     <>
-      <header className="App">
-        <Navbar />
-        <Navhome />
+      <BrowserRouter>
 
-      </header>
-      <Router>
-      <div>
+        <header className="App">
+          <Navbar />
+          <Navhome />
+        </header>
+
         <Routes>
-          <Route path="/about">
-          </Route>
-          <Route path="/users">
-
-          </Route>
-          <Route path="/">
-   
-          </Route>
+          <Route path="/starships" element={<Starships />} />
+          <Route path="/starship-details" element={<StarshipDetails />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
-      </div>
-    </Router>
+
+      </BrowserRouter>
     </>
   );
 }
