@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { Div,  } from '../../styles';
+import { Div } from '../../styles';
 
-const PaginatorContainer = styled(Div)`
-    display: flex; 
-    justify-content: center;
+const StarshipContainer = styled(Div)`
+   padding: 1rem 0rem;
 `;
 
 const StarshipsListContainer = styled(Div)`
@@ -16,5 +15,15 @@ const StarshipsListContainer = styled(Div)`
 
 const StarshipsName = styled.h2`
     text-align: center;
+    padding: 0.5rem 0rem;
 `;
-export { PaginatorContainer, StarshipsListContainer, StarshipsName};
+
+const LoaderContainer = styled(Div)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+`;
+
+
+export { LoaderContainer, StarshipContainer, StarshipsListContainer, StarshipsName};
