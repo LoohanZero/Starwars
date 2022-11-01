@@ -1,15 +1,17 @@
 import styled from 'styled-components';
-import { Link, Div, P } from '../../styles';
+import { Div, P } from '../../styles';
+import { NavLink } from 'react-router-dom';
 
 const NavbarContainer = styled(Div)`
     display: flex; 
     justify-content: center;
 `;
 
-const NavbarLink = styled(Link)`
+const NavbarLink = styled(NavLink)`
     color: #808080;
     padding: 5px; 
     cursor: pointer;
+    text-decoration: none;
 `;
 
 const ImageContainer = styled(Div)`
