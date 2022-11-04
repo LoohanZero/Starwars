@@ -5,16 +5,30 @@ import axios from 'axios';
 const StarshipsContext = React.createContext();
 
 const StarshipsProvider = ({children}) => {
-    const [ starships, setStarships ] = useState(null);
+    const [ starships, setStarships ] = useState([]);
     const [ isLoading, setIsLoading] = useState(false);
     const [ error, setError] = useState(null);
     const [ page, setPage ] = useState(1);
     const [ starshipDetails, setStarshipDetails ] = useState(null);
     const [isLoadingImage, setIsLoadingImage] = useState(false);
     const [ starshipImage, setStarshipImage ] = useState(null);
+    const [ isBottom, setIsBottom ] = useState(false);
+
+    const handleScroll = () => {
+      const scrollTop = window?.scrollY || document?.documentElement?.scrollTop || document?.body?.scrollTop;
+      const scrollHeight = document?.documentElement?.scrollHeight || document?.body?.scrollHeight;
+      const innerHeight = window.innerHeight;
+    
+      if(scrollTop + innerHeight + 100 >= scrollHeight) {
+        setIsBottom(true);
+      } 
+     
+    }
+
 
     const getStarships = async () => {
         setIsLoading(true);
+
         try {
           const response = await axios.get('https://swapi.dev/api/starships/', {
                   params: {
@@ -22,7 +36,9 @@ const StarshipsProvider = ({children}) => {
                   }
                 })
             error && setError(false);
-          setStarships(response.data.results);
+          setStarships([...starships, ...response.data.results]);
+          setIsBottom(false);
+          setPage(page + 1)
         }
         catch(error){
             setError(error.message);
@@ -92,6 +108,7 @@ const StarshipsProvider = ({children}) => {
   return (
   <StarshipsContext.Provider 
     value={{
+        isBottom,
         starships,
         isLoading,
         isLoadingImage,
@@ -102,7 +119,8 @@ const StarshipsProvider = ({children}) => {
         setPage,
         getStarships,
         getStarshipById, 
-        getStarshipImageById
+        getStarshipImageById,
+        handleScroll
     }}
    >
     {children}
