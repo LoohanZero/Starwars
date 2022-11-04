@@ -16,9 +16,9 @@ const Navbar = () => {
         <Img src={logo} alt='Star Wars Logo' />
         </ImageContainer>
         <NavLinkContainer>
-          <NavbarLink>LOG IN</NavbarLink>
+          <NavbarLink to="/login">LOG IN</NavbarLink>
           <NavText>{"//"}</NavText>
-          <NavbarLink>SING UP</NavbarLink>
+          <NavbarLink to="/register">SING UP</NavbarLink>
         </NavLinkContainer>
       </NavbarContainer>
       </>)
