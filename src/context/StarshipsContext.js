@@ -10,7 +10,7 @@ const StarshipsProvider = ({children}) => {
     const [ error, setError] = useState(null);
     const [ page, setPage ] = useState(1);
     const [ starshipDetails, setStarshipDetails ] = useState(null);
-    const [isLoadingImage, setIsLoadingImage] = useState(false);
+    const [ isLoadingImage, setIsLoadingImage] = useState(false);
     const [ starshipImage, setStarshipImage ] = useState(null);
     const [ isBottom, setIsBottom ] = useState(false);
 
@@ -90,7 +90,7 @@ const StarshipsProvider = ({children}) => {
           setStarshipImage(`https://starwars-visualguide.com/assets/img/starships/${id}.jpg`);
         }
         catch(error){
-
+          starshipImage && setStarshipImage(null);
         }
         finally {
             setIsLoadingImage(false);
