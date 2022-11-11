@@ -5,7 +5,6 @@ export const H1 = styled.h1`
 `;
 
 export const P = styled.p`
-    color: white;
 `;
 
 export const Link = styled.a`
@@ -17,7 +16,6 @@ export const Img = styled.img`
 `;
 
 export const Div = styled.div`
-
 `;
 export const Input = styled.input`
     width: 100%;
